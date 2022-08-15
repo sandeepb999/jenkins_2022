@@ -1,0 +1,32 @@
+pipeline{
+    agent none
+    properties(
+        [parameters(
+            [string(defaultValue: 'branch to enter', description: 'main', name: 'branch'),
+             string(defaultValue: 'repository link', description: 'https://github.com/sandeepb999/jenkins_2022.git', name: 'GIT_REPO')]
+            )
+        ]
+    )
+    stages {
+        stage('BUILD') {
+            agent {label 'node'}
+            environment {
+                BUILD_ENV = 'only_for_build_stage'
+            }
+                steps {
+                   sh '''
+                   #!/bin/bash
+                   pwd
+                   ls
+                   sleep 5
+                   '''
+                }    
+        }
+        stage('DEPLOY') {
+            agent {label 'main'}
+            steps {
+              echo "this is a deploy stage"
+            }    
+        }
+    }
+}
