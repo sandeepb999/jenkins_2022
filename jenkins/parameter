@@ -1,11 +1,8 @@
 pipeline{
     agent none
-    properties(
-        [parameters(
+    parameters(
             [string(defaultValue: 'branch to enter', description: 'main', name: 'branch'),
              string(defaultValue: 'repository link', description: 'https://github.com/sandeepb999/jenkins_2022.git', name: 'GIT_REPO')]
-            )
-        ]
     )
     stages {
         stage('BUILD') {
