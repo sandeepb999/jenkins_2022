@@ -1,15 +1,14 @@
 pipeline{
     agent none
     environment {
-            BRANCH = "main"
-            GIT_REPO = "https://github.com/sandeepb999/jenkins_2022.git"
+            BRANCH = 'main'
+            GIT_REPO = 'https://github.com/sandeepb999/jenkins_2022.git'
     }
     stages {
         stage('BUILD') {
             agent {label 'node'}
             
                 steps {
-                   gitbranch: env. BRANCH, url: env. GIT_REPO
                    sh '''
                    #!/bin/bash
                    pwd
