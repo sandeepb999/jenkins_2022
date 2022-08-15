@@ -3,7 +3,10 @@ pipeline {
         stages {
             stage ('BUILD'){
                 steps {
-                    echo "this is a basic pipeline"
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh 'echo "this is a basic pipeline"'
+                    exit 1
+                    }
                 }
             }
             stage ('DEPLOY'){
