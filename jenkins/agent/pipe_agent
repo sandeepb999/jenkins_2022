@@ -1,0 +1,34 @@
+pipeline{
+    agent {label 'node1'} 
+    stages {
+        stage ('BUILD'){
+             steps {
+                sh 'echo "to check"'
+                sh 'sleep 5'
+            }
+        }
+        stage ('deploy'){
+            steps{
+                sh '''
+                #!/bin/bash
+                pwd
+                date
+                echo "touch" > file1
+                cat file
+                sleep 5
+                '''
+            }
+        }
+        stage ('testing'){
+            steps {
+                mkdir directory
+            }
+        }
+        stage ('testing2'){
+            steps {
+                echo "check testing"
+                sh 'sleep 5'
+            }
+        }
+    }
+}
