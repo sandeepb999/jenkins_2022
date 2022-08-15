@@ -8,11 +8,13 @@ pipeline{
             GIT_REPO = "https://github.com/sandeepb999/jenkins_2022.git"
             }
                 steps {
-                   gitbranch: env. BRANCH; env. GIT_REPO
+                   gitbranch: env. BRANCH, env. GIT_REPO
                    sh '''
                    #!/bin/bash
                    pwd
-                   ls'''
+                   ls
+                   sleep 5
+                   '''
                 }    
         }
         stage('DEPLOY') {
