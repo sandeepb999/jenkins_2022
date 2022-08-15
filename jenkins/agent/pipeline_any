@@ -4,8 +4,7 @@ pipeline {
             stage ('BUILD'){
                 steps {
                     sh 'echo "this is a basic pipeline"'
-                    exit 1
-                    }
+                }
             }
             stage ('DEPLOY'){
                 steps {
