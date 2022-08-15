@@ -9,7 +9,7 @@ pipeline{
             agent {label 'node'}
             
                 steps {
-                   gitbranch: env. BRANCH, url: env. GIT_REPO
+                   git_branch: env.BRANCH, url: env.GIT_REPO
                    sh '''
                    #!/bin/bash
                    pwd
