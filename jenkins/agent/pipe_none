@@ -1,0 +1,33 @@
+pipeline{
+    agent none
+    stages{
+        stage ('BUILD'){
+            agent { label 'node'}
+            steps{
+                sh '''
+                #!/bin/bash
+                pwd
+                ls
+                '''
+            }
+        }
+        stage ('DEPLOY'){
+            agent {label 'main'}
+            steps{
+                sh 'timedatectl'
+            }
+        }
+        stage ('TESTING1'){
+            agent {label 'node'}
+            steps{
+                echo "testing1"
+            }
+        }
+        stage ('TESTING2'){
+            agent {label 'node'}
+            steps{
+                sh 'echo "testing2"'
+            }
+        }
+    }
+}
