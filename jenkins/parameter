@@ -1,7 +1,7 @@
 pipeline{
     agent none
     parameters {
-            string(defaultValue: 'main', description: 'branch to enter', name: 'branch')
+            string(defaultValue: 'main', description: 'branch to enter', name: 'BRANCH')
             string(defaultValue: 'https://github.com/sandeepb999/jenkins_2022.git', description: 'link', name: 'GIT_REPO')
     }
     stages {
@@ -11,6 +11,7 @@ pipeline{
                 BUILD_ENV = 'only_for_build_stage'
             }
                 steps {
+                git branch: params.BRANCH, url: params.GIT_REPO 
                    sh '''
                    #!/bin/bash
                    pwd
