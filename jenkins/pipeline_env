@@ -1,0 +1,25 @@
+pipeline{
+    agent none
+    stages {
+        stage('BUILD') {
+            agent {label 'node'}
+            environment {
+            BRANCH = "main"
+            GIT_REPO = "https://github.com/sandeepb999/jenkins_2022.git"
+            }
+                steps {
+                   gitbranch: env. BRANCH; env. GIT_REPO
+                   sh '''
+                   #!/bin/bash
+                   pwd
+                   ls'''
+                }    
+        }
+        stage('DEPLOY') {
+            agent {label 'main'}
+            steps {
+              echo "this is a deploy stage"
+            }    
+        }
+    }
+}
