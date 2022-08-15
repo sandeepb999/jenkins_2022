@@ -13,15 +13,15 @@ pipeline{
                 #!/bin/bash
                 pwd
                 date
-                echo "touch" > file1
-                cat file
+                touch file1
+                cat file1
                 sleep 5
                 '''
             }
         }
         stage ('testing'){
             steps {
-                mkdir directory
+                sh 'mkdir directory'
             }
         }
         stage ('testing2'){
