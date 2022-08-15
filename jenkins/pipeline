@@ -19,7 +19,7 @@ pipeline {
             } 
             stage ('TESTING'){
                 steps {
-                    sh echo "to check the testing stage"
+                    sh 'echo "to check the testing stage"'
                 }
             }
         }
