@@ -4,18 +4,26 @@ pipeline {
     stages {
         stage ('stage1') {
             when {
-                    expression {choice == '1'}
+                    expression {choice == 'stage1'}
                 }
                 steps {
-                    echo "Hello"                
+                    echo "Hello, this is stage1"                
                 }
         }
         stage ('stage2') {
             when {
-                    expression {choice == '2'}
+                    expression {choice == 'stage2'}
                 }
                 steps {
-                    echo "Hi" 
+                    echo "Hi, This is stage2 " 
+                }
+        }
+        stage ('stage3') {
+            when {
+                    expression {choice == 'stage3'}
+                }
+                steps {
+                    echo "This is stage3"                
                 }
         }
     }
