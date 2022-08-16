@@ -19,7 +19,7 @@ pipeline {
                         '''
                     } 
                     else{
-                        echo "skip build stage"
+                        exit 1
                     }
                 }
                 
@@ -38,7 +38,7 @@ pipeline {
                        '''
                     } 
                     else{
-                        echo "skip deploy stage"
+                        exit 1
                     }
                 }
             }
