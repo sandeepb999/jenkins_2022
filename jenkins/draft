@@ -18,7 +18,17 @@ pipeline {
                         date
                         '''
                     } 
-                    elsif (params.STAGE == 'deploy')
+                    else{
+                        exit 1
+                    }
+                }
+                
+            }
+        }
+        stage ('DEPLOY') {
+            steps {
+                script{
+                    if (params.STAGE == 'deploy')
                     {
                        sh '''
                        #!/bin/bash
@@ -27,6 +37,9 @@ pipeline {
                        ls
                        '''
                     } 
+                    else{
+                        exit 1
+                    }
                 }
             }
         }
