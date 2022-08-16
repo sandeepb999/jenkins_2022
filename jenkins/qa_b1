@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        choice(name: 'BRANCH', choices: ['main' , 'branch'], description: 'Select a branch')
+        choice(name: 'BRANCH', choices: ['main' , 'branch1'], description: 'Select a branch')
                 }
     environment {
                 GIT_REPO = "https://github.com/sandeepb999/jenkins_2022.git"
