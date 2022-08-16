@@ -1,12 +1,12 @@
 pipeline {
     agent any
     parameters {
-        choice(name: 'Stages', choices: ['stage1' , 'stage2' , 'stage3'], description: 'Select a stage')
+        choice(name: 'Stage', choices: ['stage1' , 'stage2' , 'stage3'], description: 'Select a stage')
                 }
     stages {
         stage ('stage1') {
             when {
-                    expression {params.choice == 'stage1'}
+                    expression {params.Stage == 'stage1'}
                 }
                 steps {
                     echo "Hello, this is stage1"                
@@ -14,7 +14,7 @@ pipeline {
         }
         stage ('stage2') {
             when {
-                    expression {params.choice == 'stage2'}
+                    expression {params.Stage == 'stage2'}
                 }
                 steps {
                     echo "Hi, This is stage2 " 
@@ -22,7 +22,7 @@ pipeline {
         }
         stage ('stage3') {
             when {
-                    expression {params.choice == 'stage3'}
+                    expression {params.Stage == 'stage3'}
                 }
                 steps {
                     echo "This is stage3"                
