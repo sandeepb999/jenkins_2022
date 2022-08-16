@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('stage1') {
             when {
-                    expression ( choice == '1')
+                    expression {choice == '1'}
                 }
                 steps {
                     echo "Hello"                
@@ -12,7 +12,7 @@ pipeline {
         }
         stage ('stage2') {
             when {
-                    expression ( choice == '2')
+                    expression {choice == '2'}
                 }
                 steps {
                     echo "Hi" 
