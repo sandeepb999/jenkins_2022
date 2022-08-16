@@ -18,5 +18,13 @@ pipeline {
                     echo "Hi" 
                 }
         }
+        stage ('stage3') {
+            when {
+                expression ( choice == '2')
+                }
+                steps {
+                    echo "Hi, this is stage3" 
+                }
+        }
     }
 }
