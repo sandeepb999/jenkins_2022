@@ -5,22 +5,20 @@ pipeline {
     }
 
     stages {
-        if stage (params.STAGE == 'build') {
+        stage (params.STAGE == 'build') {
             steps {
                 sh '''
                 #!/bin/bash
-                echo "start build stage"
                 pwd
                 ls
                 date
                 '''                
             }
         }
-        else stage (params.STAGE == 'deploy') {
+        stage (params.STAGE == 'deploy') {
             steps {
                 sh '''
                 #!/bin/bash
-                echo "start deploy stage"
                 touch file1
                 ls
                 '''
