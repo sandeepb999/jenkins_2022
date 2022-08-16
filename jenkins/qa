@@ -1,6 +1,8 @@
 pipeline {
     agent any
-    
+    parameters {
+        choice(name: 'Stages', choices: ['stage1' , 'stage2' , 'stage3' ], description: 'Select a stage')
+                }
     stages {
         stage ('stage1') {
             when {
