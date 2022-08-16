@@ -20,7 +20,8 @@ pipeline {
                             echo "This is a Test1 stage using main branch"
                         '''
                     } else { 
-                        echo "Skip Test1 stage"    
+                        echo "Skip Test1 stage"
+                        exit 1    
                     }
                 }
             }
@@ -34,6 +35,7 @@ pipeline {
                         sh 'echo "This is a Test2 stage using main branch"'   
                     } else { 
                         echo "This is not main branch"
+                        exit 1
                     }                    
                 }
             }
