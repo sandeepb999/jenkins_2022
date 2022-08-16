@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent node
     parameters {
         choice(name: 'BRANCH', choices: ['main' , 'branch1'], description: 'Select a branch')
                 }
