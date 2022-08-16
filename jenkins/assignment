@@ -20,18 +20,23 @@ pipeline {
                         echo "start build stage"
                         pwd
                         ls
-                        date
+                        sleep 5
                         '''
                     } 
-                    else (params.STAGE == 'deploy')
+                    else if (params.STAGE == 'deploy')
                     {
                        sh '''
                        #!/bin/bash
                        echo "start deploy stage"
                        touch file1
                        ls
+                       sleep 5
                        '''
-                    } 
+                    }
+                    else {
+                        sh 'echo "not a stage"'
+                        exit 1
+                    }
                 }
             }
         }
