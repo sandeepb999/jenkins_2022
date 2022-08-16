@@ -1,27 +1,46 @@
 pipeline {
     agent any
     parameters {
-        choice(
-            choices: ['build' , 'deploy'],
-            description: '',
-            name: 'REQUESTED_ACTION')
+        choice(name: 'STAGE', choices: ['build' , 'deploy'], description: 'stages to build')
     }
 
     stages {
         stage ('build') {
-            when {
-                expression { params.REQUESTED_ACTION == 'build' }
-            }
             steps {
-                echo "start build stage"
+                script{
+                    if (params.STAGE == 'build')
+                    {
+                        sh '''
+                        #!/bin/bash
+                        echo "start build stage"
+                        pwd
+                        ls
+                        date
+                        '''
+                    } 
+                    else{
+                        echo "skip build stage"
+                    }
+                }
+                
             }
         }
-        stage ('deploy') {
-            when {
-                expression { params.REQUESTED_ACTION == 'deploy' }
-            }
+        stage ('DEPLOY') {
             steps {
-                echo "start deploy stage"
+                script{
+                    if (params.STAGE == 'deploy')
+                    {
+                       sh '''
+                       #!/bin/bash
+                       echo "start deploy stage"
+                       touch file1
+                       ls
+                       '''
+                    } 
+                    else{
+                        echo "skip deploy stage"
+                    }
+                }
             }
         }
     }
