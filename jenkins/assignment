@@ -21,6 +21,7 @@ pipeline {
                         pwd
                         ls
                         sleep 5
+                        exit 1
                         '''
                     } 
                     else if (params.STAGE == 'deploy')
