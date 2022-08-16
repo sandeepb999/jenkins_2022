@@ -6,8 +6,7 @@ pipeline {
     environment {
                 GIT_REPO = "https://github.com/sandeepb999/jenkins_2022.git"
                 }
-    parallel {
-        stages {
+            stages {
             stage('TESTING'){
                 parallel{
                     stage ("Test1") {
@@ -41,5 +40,4 @@ pipeline {
                 }
             }
         }
-    }  
-}
+    } 
