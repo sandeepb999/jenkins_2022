@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('BUILD') {
             when {
-                    expression ( choice == 'build')
+                    expression ( choice == '1')
             }
             steps {
                 sh '''
@@ -17,7 +17,7 @@ pipeline {
         }
         stage ('DEPLOY') {
             when {
-                    expression ( choice == 'deploy')
+                    expression ( choice == '2')
             }
             steps {
                 sh '''
