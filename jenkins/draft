@@ -1,11 +1,11 @@
 pipeline {
     agent any
-    parameters {
-        choice(name: 'STAGE', choices: ['build' , 'deploy'], description: 'stages to build')
-    }
-
+    
     stages {
-        stage (params.STAGE == 'build') {
+        stage ('BUILD') {
+            when {
+                    expression ( choice == 'build')
+            }
             steps {
                 sh '''
                 #!/bin/bash
@@ -15,7 +15,10 @@ pipeline {
                 '''                
             }
         }
-        stage (params.STAGE == 'deploy') {
+        stage ('DEPLOY') {
+            when {
+                    expression ( choice == 'deploy')
+            }
             steps {
                 sh '''
                 #!/bin/bash
