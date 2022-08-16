@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+            BRANCH = 'main'
+            GIT_REPO = 'https://github.com/sandeepb999/jenkins_2022.git'
+    }
     parameters {
         choice(name: 'STAGE', choices: ['build' , 'deploy'], description: 'stages to build')
     }
@@ -10,6 +14,7 @@ pipeline {
                 script{
                     if (params.STAGE == 'build')
                     {
+                        git branch: env.BRANCH, url: env.GIT_REPO
                         sh '''
                         #!/bin/bash
                         echo "start build stage"
@@ -18,7 +23,7 @@ pipeline {
                         date
                         '''
                     } 
-                    elsif (params.STAGE == 'deploy')
+                    else (params.STAGE == 'deploy')
                     {
                        sh '''
                        #!/bin/bash
