@@ -2,30 +2,21 @@ pipeline {
     agent any
     
     stages {
-        stage ('BUILD') {
+        stage ('1 choice') {
             when {
                     expression ( choice == '1')
-            }
-            steps {
-                sh '''
-                #!/bin/bash
-                pwd
-                ls
-                date
-                '''                
-            }
+                }
+                steps {
+                    echo "Hello 1 choice"                
+                }
         }
-        stage ('DEPLOY') {
+        stage ('2 choice') {
             when {
                     expression ( choice == '2')
-            }
-            steps {
-                sh '''
-                #!/bin/bash
-                touch file1
-                ls
-                '''
-            }
+                }
+                steps {
+                    echo "Hello 2 choice" 
+                }
         }
     }
 }
