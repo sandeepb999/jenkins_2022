@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    parameters {
+        choice(
+            choices: ['build' , 'deploy'],
+            description: '',
+            name: 'REQUESTED_ACTION')
+    }
+
+    stages {
+        stage ('build') {
+            when {
+                expression { params.REQUESTED_ACTION == 'build' }
+            }
+            steps {
+                echo "start build stage"
+            }
+        }
+        stage ('deploy') {
+            when {
+                expression { params.REQUESTED_ACTION == 'deploy' }
+            }
+            steps {
+                echo "start deploy stage"
+            }
+        }
+    }
+}
