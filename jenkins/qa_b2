@@ -1,0 +1,43 @@
+pipeline {
+    agent { label 'main'}
+    parameters {
+        choice(name: 'BRANCH', choices: ['main' , 'branch1'], description: 'Select a branch')
+                }
+    environment {
+                GIT_REPO = "https://github.com/sandeepb999/jenkins_2022.git"
+                }
+    stages {
+        parallel{
+            stage ("Test1") {
+                steps {
+                    script {
+                        if(params.BRANCH == 'main')
+                        {
+                            git branch: params.BRANCH, url: env.GIT_REPO
+                            sh 'echo "This is a Test1 stage using main branch"'
+                        } else { 
+                            echo "Skip Test1 stage"
+                            exit 1
+                        }
+                    }
+                }
+            }
+            stage ("Test2") {
+                steps {
+                    script {
+                        if(params.BRANCH == 'main')
+                        {
+                            git branch: params.BRANCH, url: env.GIT_REPO
+                            echo "This is a Test2 stage using main branch" 
+                        } else { 
+                            echo "This is not main branch"
+                            exit 1
+                        }                    
+                    }
+                }
+            }
+
+        }
+        
+    }  
+}
