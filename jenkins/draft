@@ -5,42 +5,25 @@ pipeline {
     }
 
     stages {
-        stage ('build') {
+        stage (params.STAGE == 'build') {
             steps {
-                script{
-                    if (params.STAGE == 'build')
-                    {
-                        sh '''
-                        #!/bin/bash
-                        echo "start build stage"
-                        pwd
-                        ls
-                        date
-                        '''
-                    } 
-                    else{
-                        exit 1
-                    }
-                }
-                
+                sh '''
+                #!/bin/bash
+                echo "start build stage"
+                pwd
+                ls
+                date
+                '''                
             }
         }
-        stage ('DEPLOY') {
+        stage (params.STAGE == 'deploy') {
             steps {
-                script{
-                    if (params.STAGE == 'deploy')
-                    {
-                       sh '''
-                       #!/bin/bash
-                       echo "start deploy stage"
-                       touch file1
-                       ls
-                       '''
-                    } 
-                    else{
-                        exit 1
-                    }
-                }
+                sh '''
+                #!/bin/bash
+                echo "start deploy stage"
+                touch file1
+                ls
+                '''
             }
         }
     }

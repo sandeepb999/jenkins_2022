@@ -21,10 +21,9 @@ pipeline {
                         pwd
                         ls
                         sleep 5
-                        exit 1
                         '''
                     } 
-                    else if (params.STAGE == 'deploy')
+                    else (params.STAGE == 'deploy')
                     {
                        sh '''
                        #!/bin/bash
@@ -36,7 +35,6 @@ pipeline {
                     }
                     else {
                         sh 'echo "not a stage"'
-                        exit 1
                     }
                 }
             }
